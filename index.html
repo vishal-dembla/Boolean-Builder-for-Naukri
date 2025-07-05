@@ -3,20 +3,20 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>EZ Boolean Builder for Naukri Recruiters | Free Search Tool</title>
+  <title>Easy Boolean Builder for Naukri Recruiters | Free Search Tool</title>
   <meta name="description" content="Generate flawless Boolean strings for Naukri’s Advanced Search in seconds. Cut sourcing time and zero-in on the right candidates—no Boolean expertise required.">
-  <link rel="canonical" href="https://ez-boolean-builder.vercel.app/">
+  <link rel="canonical" href="https://easy-boolean-builder.vercel.app/">
 
   <meta property="og:type" content="website">
-  <meta property="og:title" content="EZ Boolean Builder – Free Tool for Naukri Recruiters">
+  <meta property="og:title" content="easy Boolean Builder – Free Tool for Naukri Recruiters">
   <meta property="og:description" content="Stop fighting with ANDs, ORs and NOTs. Build recruiter-grade Boolean queries instantly.">
-  <meta property="og:url" content="https://ez-boolean-builder.vercel.app/">
-  <meta property="og:image" content="https://ez-boolean-builder.vercel.app/og-image.png">
+  <meta property="og:url" content="https://easy-boolean-builder.vercel.app/">
+  <meta property="og:image" content="https://easy-boolean-builder.vercel.app/og-image.png">
 
   <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="EZ Boolean Builder – Free Tool for Naukri Recruiters">
+  <meta name="twitter:title" content="easy Boolean Builder – Free Tool for Naukri Recruiters">
   <meta name="twitter:description" content="Build flawless Boolean searches for Naukri in seconds.">
-  <meta name="twitter:image" content="https://ez-boolean-builder.vercel.app/og-image.png">
+  <meta name="twitter:image" content="https://easy-boolean-builder.vercel.app/og-image.png">
 
   <script type="application/ld+json">
   {
@@ -567,7 +567,7 @@
           <div class="logo-section">
             <div class="logo-icon">🔍</div>
             <div class="logo-text">
-              <h1>EZ-Query Helper</h1>
+              <h1>easy-Query Helper</h1>
               <p>for Naukri Recruiters</p>
             </div>
           </div>
@@ -744,7 +744,7 @@
     <footer class="page-footer">
         <p>
             © 2025 Vishal Dembla –
-            <a href="https://github.com/vishal-dembla/ez-boolean-builder" target="_blank" rel="noopener">Open source on GitHub</a> ·
+            <a href="https://github.com/vishal-dembla/easy-boolean-builder" target="_blank" rel="noopener">Open source on GitHub</a> ·
             <a href="https://www.linkedin.com/in/vishaldembla1/" target="_blank" rel="noopener">LinkedIn</a>
         </p>
         <p style="margin-top:0.5rem;font-size:0.8em;">
@@ -756,7 +756,7 @@
         // Global state
         let currentQuery = '';
         let validationErrors = [];
-        let savedQueries = JSON.parse(localStorage.getItem('ez_query_saved') || '[]');
+        let savedQueries = JSON.parse(localStorage.getItem('easy_query_saved') || '[]');
 
         // DOM elements
         const anyKeywords = document.getElementById('anyKeywords');
@@ -1005,7 +1005,7 @@
         function deleteQuery(event, id) {
             event.stopPropagation();
             savedQueries = savedQueries.filter(q => q.id !== id);
-            localStorage.setItem('ez_query_saved', JSON.stringify(savedQueries));
+            localStorage.setItem('easy_query_saved', JSON.stringify(savedQueries));
             renderSavedQueries();
             showToast('Query deleted');
         }
@@ -1022,7 +1022,7 @@
             };
 
             savedQueries.push(newQuery);
-            localStorage.setItem('ez_query_saved', JSON.stringify(savedQueries));
+            localStorage.setItem('easy_query_saved', JSON.stringify(savedQueries));
             renderSavedQueries();
             showToast(`"${name}" saved to your collection`);
         }
@@ -1097,7 +1097,7 @@
             
             const a = document.createElement('a');
             a.href = url;
-            a.download = `ez-query-backup-${new Date().toISOString().split('T')[0]}.json`;
+            a.download = `easy-query-backup-${new Date().toISOString().split('T')[0]}.json`;
             document.body.appendChild(a);
             a.click();
             document.body.removeChild(a);
@@ -1120,7 +1120,7 @@
                     const imported = JSON.parse(e.target.result);
                     if (Array.isArray(imported)) {
                         savedQueries = imported;
-                        localStorage.setItem('ez_query_saved', JSON.stringify(savedQueries));
+                        localStorage.setItem('easy_query_saved', JSON.stringify(savedQueries));
                         renderSavedQueries();
                         showToast('Queries imported successfully');
                     }
