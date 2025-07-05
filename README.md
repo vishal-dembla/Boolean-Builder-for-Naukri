@@ -1,4 +1,4 @@
-# EZ Boolean Builder for Naukri Recruiters
+# Easy Boolean Builder for Naukri Recruiters
 
 A simple tool to build clean Boolean search queries for Naukri.
 
