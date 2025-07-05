@@ -2,13 +2,6 @@
 
 A simple tool to build clean Boolean search queries for Naukri.
 
-## Preview
-
-![Screenshot of EZ Boolean Builder](./screenshot.png)
-
-## Live Demo
-https://ez-boolean-builder.vercel.app
-
 ---
 
 ## What It Does
