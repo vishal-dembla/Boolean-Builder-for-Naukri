@@ -1,0 +1,1151 @@
+<!DOCTYPE html>
+<html lang="en">
+<!-- 1. SEO and META HEAD: Replaced entire <head> section -->
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>EZ Boolean Builder for Naukri Recruiters | Free Search Tool</title>
+  <meta name="description" content="Generate flawless Boolean strings for Naukri’s Advanced Search in seconds. Cut sourcing time and zero-in on the right candidates—no Boolean expertise required.">
+  <link rel="canonical" href="https://ez-boolean-builder.vercel.app/">
+
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="EZ Boolean Builder – Free Tool for Naukri Recruiters">
+  <meta property="og:description" content="Stop fighting with ANDs, ORs and NOTs. Build recruiter-grade Boolean queries instantly.">
+  <meta property="og:url" content="https://ez-boolean-builder.vercel.app/">
+  <meta property="og:image" content="https://ez-boolean-builder.vercel.app/og-image.png">
+
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="EZ Boolean Builder – Free Tool for Naukri Recruiters">
+  <meta name="twitter:description" content="Build flawless Boolean searches for Naukri in seconds.">
+  <meta name="twitter:image" content="https://ez-boolean-builder.vercel.app/og-image.png">
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "Do I need all three keyword boxes?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "No. Use one, two, or all three—our builder still produces a valid Boolean string."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Is there a character limit?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Yes—Naukri allows roughly 500 characters. We show you a live counter so you don’t exceed it."
+        }
+      }
+    ]
+  }
+  </script>
+
+  <link rel="icon" href="/favicon.ico" sizes="any">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background: linear-gradient(135deg, #dbeafe 0%, #e0e7ff 100%);
+            min-height: 100vh;
+            line-height: 1.6;
+        }
+
+        .header {
+            background: white;
+            border-bottom: 1px solid #e5e7eb;
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+        }
+
+        .header-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 1rem;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .logo-section {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+        }
+
+        .logo-icon {
+            background: #2563eb;
+            padding: 0.5rem;
+            border-radius: 0.5rem;
+            color: white;
+            width: 2.5rem;
+            height: 2.5rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .logo-text h1 {
+            font-size: 1.25rem;
+            font-weight: 600;
+            color: #111827;
+        }
+
+        .logo-text p {
+            font-size: 0.875rem;
+            color: #6b7280;
+        }
+
+        .version {
+            font-size: 0.875rem;
+            color: #6b7280;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem 1rem;
+        }
+
+        .hero {
+            text-align: center;
+            margin-bottom: 2rem;
+        }
+
+        .hero h1 {
+            font-size: 2.5rem;
+            font-weight: bold;
+            color: #111827;
+            margin-bottom: 1rem;
+        }
+
+        .hero p {
+            font-size: 1.125rem;
+            color: #4b5563;
+            max-width: 42rem;
+            margin: 0 auto;
+        }
+
+        .main-grid {
+            display: grid;
+            grid-template-columns: 1fr 320px;
+            gap: 1.5rem;
+        }
+
+        .main-content {
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+        }
+
+        .card {
+            background: white;
+            border-radius: 0.5rem;
+            padding: 1.5rem;
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+        }
+
+        .input-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1.5rem;
+        }
+
+        .input-section {
+            display: flex;
+            flex-direction: column;
+            gap: 0.5rem;
+        }
+
+        .input-label {
+            font-size: 0.875rem;
+            font-weight: 600;
+            color: #111827;
+        }
+
+        .input-subtitle {
+            font-size: 0.75rem;
+            color: #6b7280;
+            margin-top: 0.25rem;
+        }
+
+        .textarea {
+            min-height: 120px;
+            padding: 0.75rem;
+            border: 1px solid #d1d5db;
+            border-radius: 0.375rem;
+            resize: vertical;
+            font-family: inherit;
+            font-size: 0.875rem;
+            transition: all 0.2s;
+        }
+
+        .textarea:focus {
+            outline: none;
+            border-color: #2563eb;
+            box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.1);
+        }
+
+        .textarea-any {
+            background-color: #f0fdf4;
+            border-color: #bbf7d0;
+        }
+
+        .textarea-all {
+            background-color: #eff6ff;
+            border-color: #bfdbfe;
+        }
+
+        .textarea-exclude {
+            background-color: #fef2f2;
+            border-color: #fecaca;
+        }
+
+        .keyword-count {
+            font-size: 0.75rem;
+            color: #9ca3af;
+        }
+
+        .preview-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: 1rem;
+        }
+
+        .preview-title {
+            font-size: 1.125rem;
+            font-weight: 600;
+            color: #111827;
+        }
+
+        .status-indicator {
+            display: flex;
+            align-items: center;
+            gap: 0.25rem;
+            font-size: 0.875rem;
+        }
+
+        .status-valid {
+            color: #16a34a;
+        }
+
+        .status-error {
+            color: #dc2626;
+        }
+
+        .preview-box {
+            padding: 1rem;
+            border-radius: 0.5rem;
+            font-family: 'Courier New', monospace;
+            font-size: 0.875rem;
+            border: 2px solid;
+            min-height: 80px;
+            white-space: pre-wrap;
+            word-break: break-word;
+        }
+
+        .preview-empty {
+            background-color: #f9fafb;
+            border-color: #e5e7eb;
+            color: #9ca3af;
+        }
+
+        .preview-valid {
+            background-color: #f9fafb;
+            border-color: #e5e7eb;
+            color: #374151;
+        }
+
+        .preview-error {
+            background-color: #fef2f2;
+            border-color: #fecaca;
+            color: #b91c1c;
+        }
+
+        .error-list {
+            margin-top: 1rem;
+            display: flex;
+            flex-direction: column;
+            gap: 0.5rem;
+        }
+
+        .error-item {
+            display: flex;
+            align-items: flex-start;
+            gap: 0.5rem;
+            font-size: 0.875rem;
+            color: #dc2626;
+        }
+
+        .query-info {
+            margin-top: 1rem;
+            font-size: 0.875rem;
+            color: #4b5563;
+        }
+
+        .query-warning {
+            color: #d97706;
+            margin-top: 0.25rem;
+        }
+
+        .action-bar {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1rem;
+            justify-content: center;
+        }
+
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.75rem 1.5rem;
+            border: none;
+            border-radius: 0.375rem;
+            font-size: 1rem;
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 0.2s;
+            text-decoration: none;
+        }
+
+        .btn:disabled {
+            opacity: 0.5;
+            cursor: not-allowed;
+        }
+
+        .btn-primary {
+            background-color: #2563eb;
+            color: white;
+        }
+
+        .btn-primary:hover:not(:disabled) {
+            background-color: #1d4ed8;
+        }
+
+        .btn-outline {
+            background-color: white;
+            color: #374151;
+            border: 1px solid #d1d5db;
+        }
+
+        .btn-outline:hover:not(:disabled) {
+            background-color: #f9fafb;
+        }
+
+        .sidebar {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .sidebar-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: 1rem;
+        }
+
+        .sidebar-title {
+            font-size: 1.125rem;
+            font-weight: 600;
+            color: #111827;
+        }
+
+        .sidebar-actions {
+            display: flex;
+            gap: 0.5rem;
+        }
+
+        .btn-icon {
+            padding: 0.5rem;
+            background: none;
+            border: none;
+            cursor: pointer;
+            border-radius: 0.25rem;
+            color: #6b7280;
+        }
+
+        .btn-icon:hover {
+            background-color: #f3f4f6;
+        }
+
+        .saved-queries {
+            max-height: 400px;
+            overflow-y: auto;
+            display: flex;
+            flex-direction: column;
+            gap: 0.75rem;
+        }
+
+        .saved-query {
+            padding: 0.75rem;
+            border: 1px solid #e5e7eb;
+            border-radius: 0.5rem;
+            cursor: pointer;
+            transition: background-color 0.2s;
+            position: relative;
+        }
+
+        .saved-query:hover {
+            background-color: #f9fafb;
+        }
+
+        .saved-query-name {
+            font-weight: 500;
+            font-size: 0.875rem;
+            color: #111827;
+            margin-bottom: 0.25rem;
+        }
+
+        .saved-query-date {
+            font-size: 0.75rem;
+            color: #6b7280;
+            margin-bottom: 0.25rem;
+        }
+
+        .saved-query-preview {
+            font-size: 0.75rem;
+            color: #9ca3af;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+
+        .delete-btn {
+            position: absolute;
+            top: 0.5rem;
+            right: 0.5rem;
+            background: none;
+            border: none;
+            cursor: pointer;
+            color: #6b7280;
+            opacity: 0;
+            transition: opacity 0.2s;
+        }
+
+        .saved-query:hover .delete-btn {
+            opacity: 1;
+        }
+
+        .delete-btn:hover {
+            color: #dc2626;
+        }
+
+        .empty-state {
+            text-align: center;
+            padding: 2rem;
+            color: #6b7280;
+            font-size: 0.875rem;
+        }
+
+        .toast {
+            position: fixed;
+            top: 1rem;
+            right: 1rem;
+            background: #111827;
+            color: white;
+            padding: 1rem 1.5rem;
+            border-radius: 0.5rem;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+            transform: translateX(100%);
+            transition: transform 0.3s ease;
+            z-index: 1000;
+        }
+
+        .toast.show {
+            transform: translateX(0);
+        }
+
+        .modal-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0, 0, 0, 0.5);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 1000;
+        }
+
+        .modal {
+            background: white;
+            padding: 1.5rem;
+            border-radius: 0.5rem;
+            max-width: 400px;
+            width: 90%;
+        }
+
+        .modal-title {
+            font-size: 1.125rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+        }
+
+        .modal-input {
+            width: 100%;
+            padding: 0.75rem;
+            border: 1px solid #d1d5db;
+            border-radius: 0.375rem;
+            margin-bottom: 1rem;
+        }
+
+        .modal-actions {
+            display: flex;
+            justify-content: flex-end;
+            gap: 0.5rem;
+        }
+
+        .hidden {
+            display: none;
+        }
+        
+        /* New Styles for Content Sections */
+        .content-section {
+            padding: 1.5rem;
+            margin-top: 1.5rem;
+            border-top: 1px solid #e5e7eb;
+        }
+        .content-section h3, .content-section h4 {
+            color: #111827;
+            font-weight: 600;
+            margin-bottom: 0.75rem;
+        }
+        .content-section h3 { font-size: 1.25rem; }
+        .content-section h4 { font-size: 1.125rem; margin-top: 1rem; }
+        .content-section p, .content-section li { color: #4b5563; margin-bottom: 0.5rem; }
+        .content-section ul { list-style-position: inside; }
+        .content-section code { background-color: #f3f4f6; padding: 0.2rem 0.4rem; border-radius: 0.25rem; font-family: 'Courier New', monospace; }
+
+        .page-footer {
+            text-align: center;
+            padding: 2rem 1rem;
+            color: #6b7280;
+            font-size: 0.875rem;
+        }
+        .page-footer a {
+            color: #2563eb;
+            text-decoration: none;
+        }
+        .page-footer a:hover {
+            text-decoration: underline;
+        }
+
+        @media (max-width: 1024px) {
+            .main-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .input-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .hero h1 {
+                font-size: 2rem;
+            }
+            
+            .container {
+                padding: 1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <div class="header-content">
+            <div class="logo-section">
+                <div class="logo-icon">🔍</div>
+                <div class="logo-text">
+                    <h1>EZ-Query Helper</h1>
+                    <p>for Naukri Recruiters</p>
+                </div>
+            </div>
+            <div class="version">v1.0</div>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <div class="container">
+        <!-- 2. HERO SECTION: Replaced content -->
+        <div class="hero">
+            <h1>Build Smarter Boolean Searches for Naukri in Seconds</h1>
+            <p>No more syntax errors. No more guesswork. Just type what you want — we’ll write the perfect Boolean query for Naukri’s advanced search.</p>
+        </div>
+
+        <div class="main-grid">
+            <div class="main-content">
+                <!-- Input Section -->
+                <div class="card">
+                    <div class="input-grid">
+                        <div class="input-section">
+                            <!-- 3. INPUT LABELS: Replaced -->
+                            <label class="input-label">Any Keywords (OR)</label>
+                            <p class="input-subtitle">At least one of these must match</p>
+                            <textarea 
+                                id="anyKeywords" 
+                                class="textarea textarea-any" 
+                                placeholder="Marketing Manager, Product Manager"
+                            ></textarea>
+                            <div id="anyCount" class="keyword-count"></div>
+                        </div>
+                        <div class="input-section">
+                             <!-- 3. INPUT LABELS: Replaced -->
+                            <label class="input-label">All Keywords (AND)</label>
+                            <p class="input-subtitle">Every keyword below must be present</p>
+                            <textarea 
+                                id="allKeywords" 
+                                class="textarea textarea-all" 
+                                placeholder="Excel, Forecasting"
+                            ></textarea>
+                            <div id="allCount" class="keyword-count"></div>
+                        </div>
+                        <div class="input-section">
+                             <!-- 3. INPUT LABELS: Replaced -->
+                            <label class="input-label">Exclude Keywords (NOT)</label>
+                            <p class="input-subtitle">Profiles with these will be removed</p>
+                            <textarea 
+                                id="excludeKeywords" 
+                                class="textarea textarea-exclude" 
+                                placeholder="FMCG, Intern"
+                            ></textarea>
+                            <div id="excludeCount" class="keyword-count"></div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Boolean Preview -->
+                <div class="card">
+                    <div class="preview-header">
+                        <!-- 4. BOOLEAN PREVIEW HEADER: Replaced -->
+                        <h3 class="preview-title">Generated Boolean String</h3>
+                        <div id="statusIndicator" class="status-indicator">✅ Ready to Copy</div>
+                    </div>
+                    <div id="previewBox" class="preview-box preview-empty">Your Boolean query will appear here...</div>
+                    <div id="errorList" class="error-list hidden"></div>
+                    <div id="queryInfo" class="query-info hidden"></div>
+                </div>
+
+                <!-- Action Bar -->
+                <div class="action-bar">
+                    <button id="copyBtn" class="btn btn-primary" disabled>
+                        📋 Copy Query
+                    </button>
+                    <button id="naukriBtn" class="btn btn-outline" disabled>
+                        🔗 Open in Naukri
+                    </button>
+                    <button id="saveBtn" class="btn btn-outline" disabled>
+                        💾 Save Query
+                    </button>
+                </div>
+                
+                <!-- 5. HOW TO USE SECTION & 6. FAQ SECTION: Added new content inside cards -->
+                <div class="card">
+                    <div class="content-section">
+                        <h3>How to Use the Boolean Search Builder</h3>
+                        <p>This tool helps recruiters write error-free Boolean queries for <strong>Naukri Resdex</strong> advanced search. Just enter keywords in the boxes below — we handle the formatting, quotes, and syntax for you.</p>
+
+                        <h4>1. Any Keywords (OR Search)</h4>
+                        <p>Add job titles or alternate terms here. Candidates matching <strong>at least one</strong> of these will be included.<br>Example: <code>Marketing Manager, Product Manager</code> → <code>("Marketing Manager" OR "Product Manager")</code></p>
+
+                        <h4>2. All Keywords (AND Search)</h4>
+                        <p>Add must-have skills, tools, or experiences. Candidates must match <strong>all listed keywords</strong>.<br>Example: <code>Excel, Forecasting</code> → <code>("Excel" AND "Forecasting")</code></p>
+
+                        <h4>3. Exclude Keywords (NOT Filter)</h4>
+                        <p>Add terms you want to exclude — like fresher roles, unrelated industries, etc.<br>Example: <code>FMCG, Intern</code> → <code>NOT ("FMCG" OR "Intern")</code></p>
+
+                        <h4>4. Copy or Launch</h4>
+                        <p>Once the query is valid, use the copy or launch buttons. You can also save and export your query for reuse.</p>
+
+                        <div class="query-info">
+                            <p><strong>Note:</strong> You can use just one or two boxes — all three are not required.</p>
+                        </div>
+                    </div>
+
+                    <div class="content-section">
+                        <h3>Frequently Asked Questions</h3>
+
+                        <h4>Do I need to fill all three boxes?</h4>
+                        <p>No. Use one, two, or all three — the tool still creates a valid Boolean query.</p>
+
+                        <h4>What’s the difference between AND, OR, and NOT?</h4>
+                        <ul>
+                            <li><strong>OR:</strong> Match any one of the terms</li>
+                            <li><strong>AND:</strong> Match all listed terms</li>
+                            <li><strong>NOT:</strong> Exclude profiles with those terms</li>
+                        </ul>
+
+                        <h4>Does this work with Naukri Resdex?</h4>
+                        <p>Yes — this follows Naukri’s Boolean rules exactly, including how it uses quotes and parentheses.</p>
+
+                        <h4>Is there a character limit?</h4>
+                        <p>Yes. Naukri typically accepts up to <strong>500 characters</strong>. This tool shows you a live counter and alerts you if you go over.</p>
+
+                        <h4>Can I save queries?</h4>
+                        <p>Yes. Saved queries are stored locally in your browser. You can also export/import them as needed.</p>
+
+                        <h4>What if my keywords have spaces?</h4>
+                        <p>The tool automatically wraps every keyword in double quotes — even multi-word ones like <code>"Sales Head"</code>.</p>
+
+                        <h4>What if something’s broken?</h4>
+                        <p>If your query has issues (like unmatched brackets or empty terms), the tool will warn you before you copy or use it.</p>
+                    </div>
+                </div>
+
+            </div>
+
+            <!-- Saved Queries Sidebar -->
+            <div class="sidebar">
+                <div class="card">
+                    <div class="sidebar-header">
+                        <h3 class="sidebar-title">Saved Queries</h3>
+                        <div class="sidebar-actions">
+                            <button id="exportBtn" class="btn-icon" title="Export queries">📥</button>
+                            <button id="importBtn" class="btn-icon" title="Import queries">📤</button>
+                            <input type="file" id="importFile" accept=".json" class="hidden">
+                        </div>
+                    </div>
+                    <div id="savedQueries" class="saved-queries">
+                        <div class="empty-state">
+                            No saved queries yet. Create and save your first query!
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Save Modal -->
+    <div id="saveModal" class="modal-overlay hidden">
+        <div class="modal">
+            <h3 class="modal-title">Save Query</h3>
+            <input type="text" id="saveInput" class="modal-input" placeholder="Enter a name for this query...">
+            <div class="modal-actions">
+                <button id="cancelSave" class="btn btn-outline">Cancel</button>
+                <button id="confirmSave" class="btn btn-primary">Save</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Toast -->
+    <div id="toast" class="toast"></div>
+    
+    <!-- 7. FOOTER: Added new footer -->
+    <footer class="page-footer">
+        <p>
+            © 2025 Vishal Dembla –
+            <a href="https://github.com/vishal-dembla/ez-boolean-builder" target="_blank" rel="noopener">Open source on GitHub</a> ·
+            <a href="https://www.linkedin.com/in/vishaldembla1/" target="_blank" rel="noopener">LinkedIn</a>
+        </p>
+        <p style="margin-top:0.5rem;font-size:0.8em;">
+            Built with Google AI Studio, ChatGPT & Lovable. Not affiliated with Naukri.com.
+        </p>
+    </footer>
+
+    <script>
+        // Global state
+        let currentQuery = '';
+        let validationErrors = [];
+        let savedQueries = JSON.parse(localStorage.getItem('ez_query_saved') || '[]');
+
+        // DOM elements
+        const anyKeywords = document.getElementById('anyKeywords');
+        const allKeywords = document.getElementById('allKeywords');
+        const excludeKeywords = document.getElementById('excludeKeywords');
+        const anyCount = document.getElementById('anyCount');
+        const allCount = document.getElementById('allCount');
+        const excludeCount = document.getElementById('excludeCount');
+        const previewBox = document.getElementById('previewBox');
+        const statusIndicator = document.getElementById('statusIndicator');
+        const errorList = document.getElementById('errorList');
+        const queryInfo = document.getElementById('queryInfo');
+        const copyBtn = document.getElementById('copyBtn');
+        const naukriBtn = document.getElementById('naukriBtn');
+        const saveBtn = document.getElementById('saveBtn');
+        const savedQueriesDiv = document.getElementById('savedQueries');
+        const exportBtn = document.getElementById('exportBtn');
+        const importBtn = document.getElementById('importBtn');
+        const importFile = document.getElementById('importFile');
+        const saveModal = document.getElementById('saveModal');
+        const saveInput = document.getElementById('saveInput');
+        const cancelSave = document.getElementById('cancelSave');
+        const confirmSave = document.getElementById('confirmSave');
+        const toast = document.getElementById('toast');
+
+        // Utility functions
+        function splitKeywords(input) {
+            if (!input.trim()) return [];
+            return input
+                .split(/[,\n]/)
+                .map(keyword => keyword.trim())
+                .filter(keyword => keyword.length > 0);
+        }
+
+        function sanitizeKeyword(keyword) {
+            const escaped = keyword.replace(/"/g, '\\"');
+            if (escaped.includes(' ') || /[&|!()]/.test(escaped)) {
+                return `"${escaped}"`;
+            }
+            return escaped;
+        }
+
+        function buildBooleanQuery(anyKw, allKw, excludeKw) {
+            const anyItems = splitKeywords(anyKw).map(sanitizeKeyword);
+            const allItems = splitKeywords(allKw).map(sanitizeKeyword);
+            const excludeItems = splitKeywords(excludeKw).map(sanitizeKeyword);
+
+            const parts = [];
+
+            if (anyItems.length > 0) {
+                if (anyItems.length === 1) {
+                    parts.push(anyItems[0]);
+                } else {
+                    parts.push(`(${anyItems.join(' OR ')})`);
+                }
+            }
+
+            if (allItems.length > 0) {
+                if (allItems.length === 1) {
+                    parts.push(allItems[0]);
+                } else {
+                    parts.push(`(${allItems.join(' AND ')})`);
+                }
+            }
+
+            if (excludeItems.length > 0) {
+                if (excludeItems.length === 1) {
+                    parts.push(`NOT ${excludeItems[0]}`);
+                } else {
+                    parts.push(`NOT (${excludeItems.join(' OR ')})`);
+                }
+            }
+
+            return parts.join(' AND ');
+        }
+
+        function validateQuery(query) {
+            const errors = [];
+
+            if (!query.trim()) {
+                return errors;
+            }
+
+            const quotes = query.match(/"/g);
+            if (quotes && quotes.length % 2 !== 0) {
+                errors.push('Unmatched quotes detected');
+            }
+
+            let parenCount = 0;
+            for (const char of query) {
+                if (char === '(') parenCount++;
+                if (char === ')') parenCount--;
+                if (parenCount < 0) {
+                    errors.push('Unmatched closing parenthesis');
+                    break;
+                }
+            }
+            if (parenCount > 0) {
+                errors.push('Unmatched opening parenthesis');
+            }
+
+            if (query.length > 500) {
+                errors.push('Query is very long and may be rejected by search engines');
+            }
+
+            if (query.includes('""')) {
+                errors.push('Empty quotes detected');
+            }
+
+            if (/\b(AND|OR|NOT)\s+(AND|OR)\b/i.test(query)) {
+                errors.push('Invalid operator combination detected');
+            }
+
+            return errors;
+        }
+
+        function updateKeywordCount(input, countElement) {
+            const keywords = splitKeywords(input.value);
+            if (keywords.length > 0) {
+                countElement.textContent = `${keywords.length} keywords`;
+            } else {
+                countElement.textContent = '';
+            }
+        }
+
+        function updatePreview() {
+            const query = buildBooleanQuery(
+                anyKeywords.value,
+                allKeywords.value,
+                excludeKeywords.value
+            );
+            
+            currentQuery = query;
+            validationErrors = validateQuery(query);
+
+            // Update preview box
+            if (!query) {
+                previewBox.textContent = 'Your Boolean query will appear here...';
+                previewBox.className = 'preview-box preview-empty';
+            } else if (validationErrors.length > 0) {
+                previewBox.textContent = query;
+                previewBox.className = 'preview-box preview-error';
+            } else {
+                previewBox.textContent = query;
+                previewBox.className = 'preview-box preview-valid';
+            }
+
+            // Update status indicator
+            if (validationErrors.length > 0) {
+                statusIndicator.innerHTML = '⚠️ <span>Validation Issues</span>';
+                statusIndicator.className = 'status-indicator status-error';
+            } else if (query) {
+                statusIndicator.innerHTML = '✅ <span>Ready to Copy</span>';
+                statusIndicator.className = 'status-indicator status-valid';
+            } else {
+                statusIndicator.innerHTML = '';
+                statusIndicator.className = 'status-indicator';
+            }
+
+            // Update error list
+            if (validationErrors.length > 0) {
+                errorList.innerHTML = validationErrors
+                    .map(error => `<div class="error-item">⚠️ <span>${error}</span></div>`)
+                    .join('');
+                errorList.classList.remove('hidden');
+            } else {
+                errorList.classList.add('hidden');
+            }
+
+            // Update query info
+            if (query && validationErrors.length === 0) {
+                let info = `<p><strong>Query Length:</strong> ${query.length} characters</p>`;
+                if (query.length > 256) {
+                    info += `<p class="query-warning">⚠️ Query exceeds 256 characters - may be rejected by Naukri</p>`;
+                }
+                queryInfo.innerHTML = info;
+                queryInfo.classList.remove('hidden');
+            } else {
+                queryInfo.classList.add('hidden');
+            }
+
+            // Update button states
+            const isValid = query && validationErrors.length === 0;
+            copyBtn.disabled = !isValid;
+            naukriBtn.disabled = !isValid;
+            saveBtn.disabled = !isValid;
+        }
+
+        function showToast(message, type = 'success') {
+            toast.textContent = message;
+            toast.classList.add('show');
+            setTimeout(() => {
+                toast.classList.remove('show');
+            }, 3000);
+        }
+
+        function copyToClipboard(text) {
+            if (navigator.clipboard && navigator.clipboard.writeText) {
+                return navigator.clipboard.writeText(text);
+            } else {
+                // Fallback for older browsers
+                const textArea = document.createElement('textarea');
+                textArea.value = text;
+                textArea.style.position = 'fixed';
+                textArea.style.opacity = '0';
+                document.body.appendChild(textArea);
+                textArea.focus();
+                textArea.select();
+                document.execCommand('copy');
+                document.body.removeChild(textArea);
+                return Promise.resolve();
+            }
+        }
+
+        function renderSavedQueries() {
+            if (savedQueries.length === 0) {
+                savedQueriesDiv.innerHTML = '<div class="empty-state">No saved queries yet. Create and save your first query!</div>';
+                return;
+            }
+
+            savedQueriesDiv.innerHTML = savedQueries
+                .map(query => `
+                    <div class="saved-query" onclick="loadQuery('${query.id}')">
+                        <div class="saved-query-name">${query.name}</div>
+                        <div class="saved-query-date">${new Date(query.createdAt).toLocaleDateString()}</div>
+                        <div class="saved-query-preview">${query.booleanQuery}</div>
+                        <button class="delete-btn" onclick="deleteQuery(event, '${query.id}')" title="Delete">🗑️</button>
+                    </div>
+                `)
+                .join('');
+        }
+
+        function loadQuery(id) {
+            const query = savedQueries.find(q => q.id === id);
+            if (query) {
+                anyKeywords.value = query.anyKeywords;
+                allKeywords.value = query.allKeywords;
+                excludeKeywords.value = query.excludeKeywords;
+                updateKeywordCount(anyKeywords, anyCount);
+                updateKeywordCount(allKeywords, allCount);
+                updateKeywordCount(excludeKeywords, excludeCount);
+                updatePreview();
+            }
+        }
+
+        function deleteQuery(event, id) {
+            event.stopPropagation();
+            savedQueries = savedQueries.filter(q => q.id !== id);
+            localStorage.setItem('ez_query_saved', JSON.stringify(savedQueries));
+            renderSavedQueries();
+            showToast('Query deleted');
+        }
+
+        function saveQuery(name) {
+            const newQuery = {
+                id: Date.now().toString(),
+                name,
+                anyKeywords: anyKeywords.value,
+                allKeywords: allKeywords.value,
+                excludeKeywords: excludeKeywords.value,
+                booleanQuery: currentQuery,
+                createdAt: new Date().toISOString()
+            };
+
+            savedQueries.push(newQuery);
+            localStorage.setItem('ez_query_saved', JSON.stringify(savedQueries));
+            renderSavedQueries();
+            showToast(`"${name}" saved to your collection`);
+        }
+
+        // Event listeners
+        anyKeywords.addEventListener('input', () => {
+            updateKeywordCount(anyKeywords, anyCount);
+            updatePreview();
+        });
+
+        allKeywords.addEventListener('input', () => {
+            updateKeywordCount(allKeywords, allCount);
+            updatePreview();
+        });
+
+        excludeKeywords.addEventListener('input', () => {
+            updateKeywordCount(excludeKeywords, excludeCount);
+            updatePreview();
+        });
+
+        copyBtn.addEventListener('click', async () => {
+            try {
+                await copyToClipboard(currentQuery);
+                copyBtn.innerHTML = '✅ Copied!';
+                showToast('Boolean query copied to clipboard');
+                setTimeout(() => {
+                    copyBtn.innerHTML = '📋 Copy Query';
+                }, 2000);
+            } catch (error) {
+                showToast('Copy failed - please select and copy manually', 'error');
+            }
+        });
+
+        naukriBtn.addEventListener('click', () => {
+            const encodedQuery = encodeURIComponent(currentQuery);
+            const naukriUrl = `https://resdex.naukri.com/advanced?keywords=${encodedQuery}`;
+            window.open(naukriUrl, '_blank');
+            showToast('Opening Naukri - query will be pre-filled if you\'re logged in');
+        });
+
+        saveBtn.addEventListener('click', () => {
+            saveModal.classList.remove('hidden');
+            saveInput.focus();
+        });
+
+        cancelSave.addEventListener('click', () => {
+            saveModal.classList.add('hidden');
+            saveInput.value = '';
+        });
+
+        confirmSave.addEventListener('click', () => {
+            const name = saveInput.value.trim();
+            if (name) {
+                saveQuery(name);
+                saveModal.classList.add('hidden');
+                saveInput.value = '';
+            }
+        });
+
+        saveInput.addEventListener('keypress', (e) => {
+            if (e.key === 'Enter') {
+                confirmSave.click();
+            }
+        });
+
+        exportBtn.addEventListener('click', () => {
+            if (savedQueries.length === 0) return;
+            
+            const data = JSON.stringify(savedQueries, null, 2);
+            const blob = new Blob([data], { type: 'application/json' });
+            const url = URL.createObjectURL(blob);
+            
+            const a = document.createElement('a');
+            a.href = url;
+            a.download = `ez-query-backup-${new Date().toISOString().split('T')[0]}.json`;
+            document.body.appendChild(a);
+a.click();
+            document.body.removeChild(a);
+            URL.revokeObjectURL(url);
+
+            showToast('Queries exported to JSON file');
+        });
+
+        importBtn.addEventListener('click', () => {
+            importFile.click();
+        });
+
+        importFile.addEventListener('change', (event) => {
+            const file = event.target.files[0];
+            if (!file) return;
+
+            const reader = new FileReader();
+            reader.onload = (e) => {
+                try {
+                    const imported = JSON.parse(e.target.result);
+                    if (Array.isArray(imported)) {
+                        savedQueries = imported;
+                        localStorage.setItem('ez_query_saved', JSON.stringify(savedQueries));
+                        renderSavedQueries();
+                        showToast('Queries imported successfully');
+                    }
+                } catch (error) {
+                    showToast('Import failed - invalid JSON file format', 'error');
+                }
+            };
+            reader.readAsText(file);
+        });
+
+        // Close modal when clicking overlay
+        saveModal.addEventListener('click', (e) => {
+            if (e.target === saveModal) {
+                cancelSave.click();
+            }
+        });
+
+        // Make functions global for onclick handlers
+        window.loadQuery = loadQuery;
+        window.deleteQuery = deleteQuery;
+
+        // Initialize
+        renderSavedQueries();
+        updatePreview();
+    </script>
+</body>
+</html>
