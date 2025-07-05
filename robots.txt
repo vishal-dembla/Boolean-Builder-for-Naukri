@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://vishal-dembla.github.io/Boolean-Builder-for-Naukri/sitemap.xml
