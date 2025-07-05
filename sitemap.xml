@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+
   <!-- home -->
   <url>
     <loc>https://vishal-dembla.github.io/Boolean-Builder-for-Naukri/</loc>
@@ -14,10 +15,11 @@
     <priority>0.7</priority>
   </url>
 
-  <!-- legacy v1 page (optional) -->
+  <!-- legacy v1 page -->
   <url>
     <loc>https://vishal-dembla.github.io/Boolean-Builder-for-Naukri/v1.html</loc>
     <changefreq>yearly</changefreq>
     <priority>0.3</priority>
   </url>
+
 </urlset>
