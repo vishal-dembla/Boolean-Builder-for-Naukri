@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html lang="en">
-<!-- 1. SEO and META HEAD: Replaced entire <head> section -->
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -509,7 +508,6 @@
             display: none;
         }
         
-        /* New Styles for Content Sections */
         .content-section {
             padding: 1.5rem;
             margin-top: 1.5rem;
@@ -562,23 +560,30 @@
     </style>
 </head>
 <body>
-    <!-- Header -->
+    <!-- Header: Replaced with the new version containing the "About" link -->
     <header class="header">
         <div class="header-content">
-            <div class="logo-section">
-                <div class="logo-icon">🔍</div>
-                <div class="logo-text">
-                    <h1>EZ-Query Helper</h1>
-                    <p>for Naukri Recruiters</p>
-                </div>
+          <!-- left: logo -->
+          <div class="logo-section">
+            <div class="logo-icon">🔍</div>
+            <div class="logo-text">
+              <h1>EZ-Query Helper</h1>
+              <p>for Naukri Recruiters</p>
             </div>
-            <div class="version">v1.0</div>
+          </div>
+      
+          <!-- right: nav -->
+          <nav style="display:flex;align-items:center;gap:1.25rem;">
+            <a href="about.html"
+               style="font-size:0.95rem;color:#374151;text-decoration:none;"
+            >About</a>
+            <span class="version" style="font-size:0.9rem;color:#6b7280;">v1.0</span>
+          </nav>
         </div>
     </header>
 
     <!-- Main Content -->
     <div class="container">
-        <!-- 2. HERO SECTION: Replaced content -->
         <div class="hero">
             <h1>Build Smarter Boolean Searches for Naukri in Seconds</h1>
             <p>No more syntax errors. No more guesswork. Just type what you want — we’ll write the perfect Boolean query for Naukri’s advanced search.</p>
@@ -590,7 +595,6 @@
                 <div class="card">
                     <div class="input-grid">
                         <div class="input-section">
-                            <!-- 3. INPUT LABELS: Replaced -->
                             <label class="input-label">Any Keywords (OR)</label>
                             <p class="input-subtitle">At least one of these must match</p>
                             <textarea 
@@ -601,7 +605,6 @@
                             <div id="anyCount" class="keyword-count"></div>
                         </div>
                         <div class="input-section">
-                             <!-- 3. INPUT LABELS: Replaced -->
                             <label class="input-label">All Keywords (AND)</label>
                             <p class="input-subtitle">Every keyword below must be present</p>
                             <textarea 
@@ -612,7 +615,6 @@
                             <div id="allCount" class="keyword-count"></div>
                         </div>
                         <div class="input-section">
-                             <!-- 3. INPUT LABELS: Replaced -->
                             <label class="input-label">Exclude Keywords (NOT)</label>
                             <p class="input-subtitle">Profiles with these will be removed</p>
                             <textarea 
@@ -628,7 +630,6 @@
                 <!-- Boolean Preview -->
                 <div class="card">
                     <div class="preview-header">
-                        <!-- 4. BOOLEAN PREVIEW HEADER: Replaced -->
                         <h3 class="preview-title">Generated Boolean String</h3>
                         <div id="statusIndicator" class="status-indicator">✅ Ready to Copy</div>
                     </div>
@@ -650,7 +651,6 @@
                     </button>
                 </div>
                 
-                <!-- 5. HOW TO USE SECTION & 6. FAQ SECTION: Added new content inside cards -->
                 <div class="card">
                     <div class="content-section">
                         <h3>How to Use the Boolean Search Builder</h3>
@@ -741,7 +741,6 @@
     <!-- Toast -->
     <div id="toast" class="toast"></div>
     
-    <!-- 7. FOOTER: Added new footer -->
     <footer class="page-footer">
         <p>
             © 2025 Vishal Dembla –
@@ -1100,7 +1099,7 @@
             a.href = url;
             a.download = `ez-query-backup-${new Date().toISOString().split('T')[0]}.json`;
             document.body.appendChild(a);
-a.click();
+            a.click();
             document.body.removeChild(a);
             URL.revokeObjectURL(url);
 
