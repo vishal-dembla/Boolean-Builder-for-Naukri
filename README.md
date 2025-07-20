@@ -1,6 +1,7 @@
 # Easy Boolean Builder for Naukri Recruiters
 
 A simple tool to build clean Boolean search queries for Naukri.
+https://vishal-dembla.github.io/Boolean-Builder-for-Naukri/
 
 ---
 
